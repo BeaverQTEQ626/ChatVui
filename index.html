@@ -45,4 +45,49 @@
     "Tui cũng nghĩ vậy",
     "Haha đúng ghê",
     "Có ai thấy giống tui không?",
-    "Nghe cuốn ghê
+    "Nghe cuốn ghê",
+    "Tối nay ai rảnh không?",
+    "Cười xỉu 🤣",
+    "Hơi căng à nha",
+    "Ủa thiệt hả?"
+  ];
+
+  // tạo 50 bot
+  for (let i = 1; i <= 50; i++) {
+    botNames.push("Bot_" + i);
+  }
+
+  const chat = document.getElementById("chat");
+
+  function addMessage(name, text) {
+    chat.innerHTML += `<p><b>${name}:</b> ${text}</p>`;
+    chat.scrollTop = chat.scrollHeight;
+  }
+
+  // bot nói chuyện với nhau
+  setInterval(() => {
+    let bot = botNames[Math.floor(Math.random() * botNames.length)];
+    let msg = botReplies[Math.floor(Math.random() * botReplies.length)];
+    addMessage(bot, msg);
+  }, 1500);
+
+  function send() {
+    let text = document.getElementById("msg").value;
+    if (!text) return;
+    addMessage("🧑 Arslie", text);
+    document.getElementById("msg").value = "";
+
+    // bot trả lời Arslie
+    let replyCount = Math.floor(Math.random() * 3) + 1;
+    for (let i = 0; i < replyCount; i++) {
+      setTimeout(() => {
+        let bot = botNames[Math.floor(Math.random() * botNames.length)];
+        let msg = botReplies[Math.floor(Math.random() * botReplies.length)];
+        addMessage(bot, msg);
+      }, 800 + i * 600);
+    }
+  }
+</script>
+
+</body>
+</html>
