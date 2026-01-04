@@ -35,21 +35,27 @@
 <div id="chat"></div>
 
 <input id="msg" placeholder="Arslie nhập tin nhắn..." />
-<button onclick="send()">Gửi</button>
+<button id="sendBtn">Gửi</button>
 
 <script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const chat = document.getElementById("chat");
+  const input = document.getElementById("msg");
+  const button = document.getElementById("sendBtn");
+
   const botNames = [];
   const botReplies = [
-    "Chuẩn luôn!",
-    "Nghe hợp lý đó 😆",
-    "Tui cũng nghĩ vậy",
-    "Haha đúng ghê",
-    "Có ai thấy giống tui không?",
-    "Nghe cuốn ghê",
-    "Tối nay ai rảnh không?",
-    "Cười xỉu 🤣",
+    "Chuẩn bài luôn!",
+    "Nghe cuốn ghê 😆",
+    "Tui đồng ý nha",
+    "Haha đúng rồi",
+    "Ai cũng nghĩ vậy á",
+    "Ủa thiệt hả?",
+    "Nghe hợp lý đó",
+    "Cười muốn xỉu 🤣",
     "Hơi căng à nha",
-    "Ủa thiệt hả?"
+    "Có lý ghê"
   ];
 
   // tạo 50 bot
@@ -57,36 +63,36 @@
     botNames.push("Bot_" + i);
   }
 
-  const chat = document.getElementById("chat");
-
   function addMessage(name, text) {
     chat.innerHTML += `<p><b>${name}:</b> ${text}</p>`;
     chat.scrollTop = chat.scrollHeight;
   }
 
-  // bot nói chuyện với nhau
+  // bot tự nói chuyện
   setInterval(() => {
-    let bot = botNames[Math.floor(Math.random() * botNames.length)];
-    let msg = botReplies[Math.floor(Math.random() * botReplies.length)];
+    const bot = botNames[Math.floor(Math.random() * botNames.length)];
+    const msg = botReplies[Math.floor(Math.random() * botReplies.length)];
     addMessage(bot, msg);
-  }, 1500);
+  }, 1200);
 
-  function send() {
-    let text = document.getElementById("msg").value;
+  button.onclick = () => {
+    const text = input.value.trim();
     if (!text) return;
-    addMessage("🧑 Arslie", text);
-    document.getElementById("msg").value = "";
 
-    // bot trả lời Arslie
-    let replyCount = Math.floor(Math.random() * 3) + 1;
+    addMessage("🧑 Arslie", text);
+    input.value = "";
+
+    const replyCount = Math.floor(Math.random() * 3) + 1;
     for (let i = 0; i < replyCount; i++) {
       setTimeout(() => {
-        let bot = botNames[Math.floor(Math.random() * botNames.length)];
-        let msg = botReplies[Math.floor(Math.random() * botReplies.length)];
+        const bot = botNames[Math.floor(Math.random() * botNames.length)];
+        const msg = botReplies[Math.floor(Math.random() * botReplies.length)];
         addMessage(bot, msg);
-      }, 800 + i * 600);
+      }, 600 + i * 700);
     }
-  }
+  };
+
+});
 </script>
 
 </body>
