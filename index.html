@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bot Chat - Arslie Hub</title>
+  <style>
+    body {
+      background: #111;
+      color: white;
+      font-family: Arial;
+      padding: 10px;
+    }
+    #chat {
+      height: 400px;
+      background: #1e1e1e;
+      overflow-y: auto;
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+    input {
+      width: 75%;
+      padding: 10px;
+    }
+    button {
+      padding: 10px;
+    }
+    p { margin: 5px 0; }
+  </style>
+</head>
+<body>
+
+<h2>💬 Bot Chat (50+ người)</h2>
+
+<div id="chat"></div>
+
+<input id="msg" placeholder="Arslie nhập tin nhắn..." />
+<button onclick="send()">Gửi</button>
+
+<script>
+  const botNames = [];
+  const botReplies = [
+    "Chuẩn luôn!",
+    "Nghe hợp lý đó 😆",
+    "Tui cũng nghĩ vậy",
+    "Haha đúng ghê",
+    "Có ai thấy giống tui không?",
+    "Nghe cuốn ghê
